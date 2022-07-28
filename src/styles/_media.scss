@@ -1,0 +1,179 @@
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 960px;
+    }
+
+    .header {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 720px;
+        padding: 0;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+
+        &__inner {
+            .header__burger {
+                position: absolute;
+                width: 23px;
+                height: 19px;
+                cursor: pointer;
+
+                span {
+                    position: absolute;
+                    background-color: black;
+                    width: 100%;
+                    height: 4px;
+                    border-radius: 9999px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    &::before,
+                    &::after {
+                        position: absolute;
+                        background-color: black;
+                        width: 100%;
+                        height: 4px;
+                        border-radius: 9999px;
+                        content: '';
+                        left: 0;
+                    }
+
+                    &::before {
+                        top: -8px;
+                    }
+
+                    &::after {
+                        top: 8px;
+                    }
+                }
+
+                &.close {
+                    z-index: 30;
+                    right: calc(50% + 30px);
+                    transition: all 0.3s ease-in-out;
+
+                    span {
+                        background: transparent;
+
+                        &::before {
+                            top: 0;
+                            transform: rotate(45deg);
+                        }
+
+                        &::after {
+                            top: 0;
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+            }
+
+            .nav-mob {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 50%;
+                height: 100%;
+                z-index: 20;
+                overflow-y: auto;
+                transition: ease-in-out 0.3s;
+                background: white;
+
+                &.active {
+                    left: 0;
+                }
+
+                .logo-mob {
+                    padding: 1.52rem 1.875rem;
+                    border-bottom: $border-bottom;
+
+                    img {
+                        max-width: 10.5rem;
+                    }
+                }
+
+                .nav__list {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1rem;
+                    padding: 1.875rem 1.875rem 0;
+
+                    .nav__item {
+                        border-bottom: $border-bottom;
+                        padding-bottom: 1rem;
+                    }
+
+                    .nav__link {
+                        @include nav-link;
+                    }
+                }
+            }
+
+            .burger-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 10;
+
+                &.active {
+                    display: block;
+                    background: rgb(0 0 0 / 50%);
+                }
+            }
+        }
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .posts {
+        .post {
+            flex-basis: calc(50% - $column-gap-post);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .header {
+        &__inner {
+            .header__burger {
+                &.close {
+                    right: 30px;
+                }
+            }
+        }
+
+        .nav-mob {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 0.625rem;
+    }
+
+    .posts {
+        .post {
+            flex-basis: auto;
+        }
+    }
+}
